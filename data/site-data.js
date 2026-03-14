@@ -19,7 +19,8 @@ window.familyControlData = {
         title: "00_START_HERE",
         category: "Core",
         description: "Where someone should begin",
-        drive_link: "REPLACE_WITH_GOOGLE_DRIVE_LINK",
+        // Google Drive folder link for 00_START_HERE
+        drive_link: "https://drive.google.com/drive/folders/...",
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -27,7 +28,8 @@ window.familyControlData = {
         title: "01_If_David_Dies",
         category: "Emergency",
         description: "Immediate steps, first 30 days, and first 90 days",
-        drive_link: "REPLACE_WITH_GOOGLE_DRIVE_LINK",
+        // Google Drive folder link for 01_If_David_Dies
+        drive_link: "https://drive.google.com/drive/folders/...",
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -35,7 +37,8 @@ window.familyControlData = {
         title: "02_Household_Financial_Map",
         category: "Financial",
         description: "How the household financial system works",
-        drive_link: "REPLACE_WITH_GOOGLE_DRIVE_LINK",
+        // Google Drive folder link for 02_Household_Financial_Map
+        drive_link: "https://drive.google.com/drive/folders/...",
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -43,7 +46,8 @@ window.familyControlData = {
         title: "03_Important_Contacts",
         category: "Contacts",
         description: "Key people to call for help",
-        drive_link: "REPLACE_WITH_GOOGLE_DRIVE_LINK",
+        // Google Drive folder link for 03_Important_Contacts
+        drive_link: "https://drive.google.com/drive/folders/...",
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -51,7 +55,8 @@ window.familyControlData = {
         title: "04_Accounts_and_Assets",
         category: "Financial",
         description: "Banking, assets, and account records",
-        drive_link: "REPLACE_WITH_GOOGLE_DRIVE_LINK",
+        // Google Drive folder link for 04_Accounts_and_Assets
+        drive_link: "https://drive.google.com/drive/folders/...",
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -59,7 +64,8 @@ window.familyControlData = {
         title: "05_Bills_and_Payments",
         category: "Financial",
         description: "Recurring bills, payment instructions, and autopay",
-        drive_link: "REPLACE_WITH_GOOGLE_DRIVE_LINK",
+        // Google Drive folder link for 05_Bills_and_Payments
+        drive_link: "https://drive.google.com/drive/folders/...",
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -67,7 +73,8 @@ window.familyControlData = {
         title: "06_Insurance",
         category: "Insurance",
         description: "Policies, coverage, and claim contacts",
-        drive_link: "REPLACE_WITH_GOOGLE_DRIVE_LINK",
+        // Google Drive folder link for 06_Insurance
+        drive_link: "https://drive.google.com/drive/folders/...",
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -75,7 +82,8 @@ window.familyControlData = {
         title: "07_Documents_and_Locations",
         category: "Documents",
         description: "Important records and where they are stored",
-        drive_link: "REPLACE_WITH_GOOGLE_DRIVE_LINK",
+        // Google Drive folder link for 07_Documents_and_Locations
+        drive_link: "https://drive.google.com/drive/folders/...",
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -83,7 +91,8 @@ window.familyControlData = {
         title: "08_Constellation_Continuity",
         category: "Constellation",
         description: "Constellation-related continuity materials",
-        drive_link: "REPLACE_WITH_GOOGLE_DRIVE_LINK",
+        // Google Drive folder link for 08_Constellation_Continuity
+        drive_link: "https://drive.google.com/drive/folders/...",
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -91,7 +100,8 @@ window.familyControlData = {
         title: "09_Technical_Help",
         category: "Support",
         description: "Instructions for technical systems and support",
-        drive_link: "REPLACE_WITH_GOOGLE_DRIVE_LINK",
+        // Google Drive folder link for 09_Technical_Help
+        drive_link: "https://drive.google.com/drive/folders/...",
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -99,7 +109,8 @@ window.familyControlData = {
         title: "10_Archive",
         category: "Archive",
         description: "Older materials kept for reference",
-        drive_link: "REPLACE_WITH_GOOGLE_DRIVE_LINK",
+        // Google Drive folder link for 10_Archive
+        drive_link: "https://drive.google.com/drive/folders/...",
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       }
     ]
