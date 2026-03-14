@@ -1,4 +1,7 @@
+// Central content store for the entire static site.
+// Update copy, records, labels, and navigation here instead of editing page HTML.
 window.familyControlData = {
+  // Shared site chrome rendered on every page.
   site: {
     brandTitle: "Family Control Center",
     brandSubtitle: "Household command dashboard",
@@ -11,6 +14,7 @@ window.familyControlData = {
       { id: "emergency", label: "Emergency", href: "emergency.html" }
     ]
   },
+  // Homepage content: shared summary, hero metrics, and dashboard cards.
   dashboard: {
     pageMeta: {
       title: "Family Control Center",
@@ -108,6 +112,7 @@ window.familyControlData = {
       }
     ]
   },
+  // Accounts page content and record grid.
   accounts: {
     pageMeta: {
       title: "Accounts | Family Control Center",
@@ -202,6 +207,7 @@ window.familyControlData = {
       }
     ]
   },
+  // Insurance page content and policy records.
   insurance: {
     pageMeta: {
       title: "Insurance | Family Control Center",
@@ -285,6 +291,7 @@ window.familyControlData = {
       }
     ]
   },
+  // Contacts page content and directory records.
   contacts: {
     pageMeta: {
       title: "Contacts | Family Control Center",
@@ -379,6 +386,9 @@ window.familyControlData = {
       }
     ]
   },
+  // Documents page content.
+  // `drive_link` is optional and can be populated later with a Google Drive URL.
+  // `last_reviewed` should stay in YYYY-MM-DD format for consistent display.
   documents: {
     pageMeta: {
       title: "Documents | Family Control Center",
@@ -491,6 +501,7 @@ window.familyControlData = {
       }
     ]
   },
+  // Emergency page content with immediate actions and preparedness lists.
   emergency: {
     pageMeta: {
       title: "Emergency | Family Control Center",

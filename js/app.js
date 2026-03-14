@@ -7,7 +7,6 @@
 
   const page = document.body.dataset.page;
   renderSiteChrome(data.site, page);
-  setActiveNav(page);
   initNavToggle();
 
   if (page === "dashboard") {
@@ -16,14 +15,6 @@
   }
 
   renderInnerPage(page, data[page]);
-
-  function setActiveNav(currentPage) {
-    document.querySelectorAll("[data-nav]").forEach(function (link) {
-      if (link.dataset.nav === currentPage) {
-        link.classList.add("is-active");
-      }
-    });
-  }
 
   function renderSiteChrome(site, currentPage) {
     if (!site) {
@@ -145,6 +136,7 @@
     }).join("");
   }
 
+  // Dashboard cards share a structured schema: eyebrow, title, copy, facts, actions.
   function renderDashboardCards(id, items) {
     const target = document.getElementById(id);
 
@@ -175,6 +167,7 @@
     }).join("");
   }
 
+  // Generic record renderer used by accounts, insurance, contacts, and documents.
   function renderRecordCards(id, items) {
     const target = document.getElementById(id);
 
@@ -221,6 +214,7 @@
     }).join("");
   }
 
+  // Emergency page list renderer.
   function renderActionCards(id, items) {
     const target = document.getElementById(id);
 
