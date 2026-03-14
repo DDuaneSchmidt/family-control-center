@@ -26,13 +26,10 @@
   function renderDashboard(dashboard) {
     setText("readinessScore", dashboard.readinessScore);
     setText("readinessText", dashboard.readinessText);
+    renderButtons("heroActions", dashboard.heroActions);
     renderMetricCards("heroMetrics", dashboard.heroMetrics);
     renderStatCards("householdStatus", dashboard.householdStatus);
-    renderSummaryList("accountsSummary", dashboard.accountsSummary);
-    renderSummaryList("insuranceSummary", dashboard.insuranceSummary);
-    renderSummaryList("contactsSummary", dashboard.contactsSummary);
-    renderSummaryList("documentsSummary", dashboard.documentsSummary);
-    renderSummaryList("emergencySummary", dashboard.emergencySummary);
+    renderDashboardCards("dashboardCards", dashboard.sections);
   }
 
   function renderInnerPage(currentPage, section) {
@@ -93,21 +90,34 @@
     }).join("");
   }
 
-  function renderSummaryList(id, items) {
+  function renderDashboardCards(id, items) {
     const target = document.getElementById(id);
 
     if (!target) {
       return;
     }
 
-    target.innerHTML = '<div class="summary-list">' + items.map(function (item) {
+    target.innerHTML = items.map(function (item) {
+      const facts = item.facts.map(function (fact) {
+        return '<li>' + escapeHtml(fact) + "</li>";
+      }).join("");
+
+      const actions = item.actions ? renderButtonMarkup(item.actions) : "";
+
       return [
-        '<div class="summary-list-item">',
-        "<strong>" + escapeHtml(item.title) + "</strong>",
-        '<p class="muted">' + escapeHtml(item.note) + "</p>",
-        "</div>"
+        '<article class="panel summary-card structured-card">',
+        '<div class="card-header">',
+        "<div>",
+        '<p class="eyebrow">' + escapeHtml(item.eyebrow) + "</p>",
+        '<h3 class="card-title">' + escapeHtml(item.title) + "</h3>",
+        "</div>",
+        "</div>",
+        '<p class="card-copy">' + escapeHtml(item.description) + "</p>",
+        '<ul class="bullet-list">' + facts + "</ul>",
+        '<div class="card-actions">' + actions + "</div>",
+        "</article>"
       ].join("");
-    }).join("") + "</div>";
+    }).join("");
   }
 
   function renderRecordCards(id, items) {
@@ -127,20 +137,29 @@
         ].join("");
       }).join("");
 
-      const tags = item.tags.map(function (tag) {
+      const tags = item.tags.filter(function (tag) {
+        return tag !== item.category;
+      }).map(function (tag) {
         return '<span class="tag">' + escapeHtml(tag) + "</span>";
       }).join("");
+
+      const descriptor = item.description || item.subtitle || "";
+      const categoryTag = item.category ? '<span class="tag">' + escapeHtml(item.category) + "</span>" : "";
+      const driveAction = item.drive_link ? renderButtonMarkup([
+        { label: "Open Drive", href: item.drive_link, variant: "secondary", external: true }
+      ]) : "";
 
       return [
         '<article class="record-card">',
         '<div class="record-header">',
         "<div>",
         '<h3 class="record-title">' + escapeHtml(item.title) + "</h3>",
-        '<p class="muted">' + escapeHtml(item.subtitle) + "</p>",
+        '<p class="muted">' + escapeHtml(descriptor) + "</p>",
         "</div>",
         "</div>",
-        '<div class="record-meta">' + tags + "</div>",
+        '<div class="record-meta">' + categoryTag + tags + "</div>",
         '<div class="record-grid">' + fields + "</div>",
+        driveAction ? '<div class="card-actions">' + driveAction + "</div>" : "",
         "</article>"
       ].join("");
     }).join("");
@@ -163,6 +182,28 @@
     }).join("") + "</div>";
   }
 
+  function renderButtons(id, items) {
+    const target = document.getElementById(id);
+
+    if (!target || !items) {
+      return;
+    }
+
+    target.innerHTML = renderButtonMarkup(items);
+  }
+
+  function renderButtonMarkup(items) {
+    return items.map(function (item) {
+      const externalAttrs = item.external ? ' target="_blank" rel="noreferrer"' : "";
+
+      return [
+        '<a class="button button-' + escapeHtml(item.variant || "secondary") + '" href="' + escapeAttribute(item.href) + '"' + externalAttrs + ">",
+        escapeHtml(item.label),
+        "</a>"
+      ].join("");
+    }).join("");
+  }
+
   function setText(id, value) {
     const element = document.getElementById(id);
 
@@ -178,5 +219,9 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#39;");
+  }
+
+  function escapeAttribute(value) {
+    return escapeHtml(value);
   }
 })();

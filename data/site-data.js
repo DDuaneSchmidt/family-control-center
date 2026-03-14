@@ -2,6 +2,10 @@ window.familyControlData = {
   dashboard: {
     readinessScore: "92%",
     readinessText: "Core records organized, coverage active, and emergency steps documented.",
+    heroActions: [
+      { label: "Open accounts", href: "accounts.html", variant: "primary" },
+      { label: "Emergency page", href: "emergency.html", variant: "secondary" }
+    ],
     heroMetrics: [
       { label: "Tracked assets", value: "$2.48M", note: "Across banking, brokerage, retirement, and cash reserve accounts." },
       { label: "Protection renewals", value: "3 upcoming", note: "Home, umbrella, and disability policies renew within 120 days." },
@@ -14,30 +18,67 @@ window.familyControlData = {
       { label: "Emergency readiness", value: "High", note: "Go-bag stocked and primary response steps documented." },
       { label: "Next review", value: "Apr 6", note: "Quarterly household control review scheduled." }
     ],
-    accountsSummary: [
-      { title: "Operating cash remains above target.", note: "Primary checking plus reserve cash covers 9 months of core household expenses." },
-      { title: "Brokerage concentration is manageable.", note: "Taxable account remains diversified across index and municipal bond sleeves." },
-      { title: "Retirement accounts are fully mapped.", note: "401(k), Roth IRA, and beneficiary details are recorded." }
-    ],
-    insuranceSummary: [
-      { title: "Umbrella coverage is current.", note: "$3M umbrella policy remains active with annual renewal tracked." },
-      { title: "Disability policy requires review.", note: "Benefit level is solid, but elimination period should be reconfirmed." },
-      { title: "Home and auto are bundled.", note: "Carrier contact and policy IDs are included for claims access." }
-    ],
-    contactsSummary: [
-      { title: "Professional support network is complete.", note: "Attorney, CPA, wealth advisor, and insurance broker are listed." },
-      { title: "Medical contacts are in one place.", note: "Primary care, pediatric, and pharmacy information are readily accessible." },
-      { title: "Family escalation chain is clear.", note: "Primary and secondary emergency contacts are documented." }
-    ],
-    documentsSummary: [
-      { title: "Estate documents backed up.", note: "Will, trust, powers of attorney, and healthcare directives have digital copies." },
-      { title: "Identity records tracked.", note: "Passports, birth certificates, and social security copies are indexed." },
-      { title: "Storage map is documented.", note: "Originals, safe deposit, and encrypted drive locations are listed." }
-    ],
-    emergencySummary: [
-      { title: "First actions are documented by priority.", note: "911, family check-in, home utilities, and temporary housing steps are defined." },
-      { title: "Medical and travel kits are current.", note: "Medication list, chargers, IDs, and basic cash reserve are included." },
-      { title: "Meeting point and backup plan are set.", note: "Primary meeting point and alternate out-of-area contact are recorded." }
+    sections: [
+      {
+        eyebrow: "Household Status",
+        title: "Readiness across the whole household",
+        description: "Use the dashboard as the top-level weekly check for coverage, documentation, and emergency preparedness.",
+        facts: ["92% household readiness", "Quarterly review set for Apr 6", "Core records organized"],
+        actions: [
+          { label: "Refresh dashboard", href: "index.html", variant: "secondary" },
+          { label: "Review emergency", href: "emergency.html", variant: "ghost" }
+        ]
+      },
+      {
+        eyebrow: "Accounts Summary",
+        title: "Liquidity and custody posture",
+        description: "Cash reserve, taxable accounts, and retirement assets are visible with owners and access details.",
+        facts: ["$148K emergency cash", "$1.31M retirement assets", "6 mapped accounts"],
+        actions: [
+          { label: "View accounts", href: "accounts.html", variant: "primary" },
+          { label: "Check reserve", href: "accounts.html", variant: "ghost" }
+        ]
+      },
+      {
+        eyebrow: "Insurance Summary",
+        title: "Coverage and renewal visibility",
+        description: "Property, liability, life, disability, and auto policies are tracked with carrier and renewal context.",
+        facts: ["5 active policies", "$3M umbrella layer", "3 renewals upcoming"],
+        actions: [
+          { label: "View insurance", href: "insurance.html", variant: "primary" },
+          { label: "Open renewals", href: "insurance.html", variant: "ghost" }
+        ]
+      },
+      {
+        eyebrow: "Key Contacts",
+        title: "Trusted people at a glance",
+        description: "Professional and family escalation contacts are grouped so the right person is reachable quickly.",
+        facts: ["12 verified contacts", "5 professional advisors", "Out-of-area backup listed"],
+        actions: [
+          { label: "Open contacts", href: "contacts.html", variant: "primary" },
+          { label: "Emergency chain", href: "contacts.html", variant: "ghost" }
+        ]
+      },
+      {
+        eyebrow: "Documents",
+        title: "Critical records and backups",
+        description: "Document entries capture category, storage notes, and a future-ready field for direct Drive access.",
+        facts: ["15 tracked records", "13 digital backups", "Drive links supported"],
+        actions: [
+          { label: "View documents", href: "documents.html", variant: "primary" },
+          { label: "Check backups", href: "documents.html", variant: "ghost" }
+        ]
+      },
+      {
+        eyebrow: "Emergency Access",
+        title: "Fast actions under pressure",
+        description: "Immediate steps, supply readiness, and fallback coordination stay accessible from any static page load.",
+        facts: ["9-step response checklist", "94% go-bag completion", "2-layer contact redundancy"],
+        actions: [
+          { label: "Open emergency", href: "emergency.html", variant: "primary" },
+          { label: "First actions", href: "emergency.html", variant: "ghost" }
+        ]
+      }
     ]
   },
   accounts: {
@@ -283,8 +324,10 @@ window.familyControlData = {
     records: [
       {
         title: "Estate Plan Binder",
-        subtitle: "Will, trust, POA, healthcare directives",
+        category: "Legal",
+        description: "Will, trust, powers of attorney, and healthcare directives with current originals and backup copies.",
         tags: ["Legal", "Original + digital", "High priority"],
+        drive_link: "",
         fields: {
           Location: "Home safe",
           Backup: "Encrypted drive + secure cloud",
@@ -294,8 +337,10 @@ window.familyControlData = {
       },
       {
         title: "Identity Packet",
-        subtitle: "Passports, birth certificates, social security copies",
+        category: "Identity",
+        description: "Passports, birth certificates, and identity copies grouped for household travel and verification needs.",
         tags: ["Identity", "Original + digital", "Family"],
+        drive_link: "",
         fields: {
           Location: "Safe deposit box",
           Backup: "Encrypted drive",
@@ -305,8 +350,10 @@ window.familyControlData = {
       },
       {
         title: "Property and Vehicle Records",
-        subtitle: "Deed, mortgage note, titles, registrations",
+        category: "Property",
+        description: "Deed, mortgage note, titles, and registrations with one remaining scan still needed.",
         tags: ["Property", "Mixed backup", "Needs action"],
+        drive_link: "",
         fields: {
           Location: "Fire safe + filing cabinet",
           Backup: "Partial digital archive",
@@ -316,8 +363,10 @@ window.familyControlData = {
       },
       {
         title: "Insurance Archive",
-        subtitle: "Declarations pages and claims contacts",
+        category: "Insurance",
+        description: "Declarations pages, policy schedules, and claims contact information for active coverage.",
         tags: ["Insurance", "Digital first", "Current"],
+        drive_link: "",
         fields: {
           Location: "Secure cloud vault",
           Backup: "Printed summary in binder",
@@ -327,8 +376,10 @@ window.familyControlData = {
       },
       {
         title: "Tax Records",
-        subtitle: "Returns, K-1s, and supporting PDFs",
+        category: "Tax",
+        description: "Returns, K-1s, and supporting PDFs retained with CPA-accessible storage.",
         tags: ["Tax", "7-year archive", "CPA shared"],
+        drive_link: "",
         fields: {
           Location: "Encrypted cloud folder",
           Backup: "Offline archive disk",
@@ -338,8 +389,10 @@ window.familyControlData = {
       },
       {
         title: "Medical Information Packet",
-        subtitle: "Insurance cards, medication lists, allergies",
+        category: "Medical",
+        description: "Insurance cards, medication lists, and allergy information for travel and emergency use.",
         tags: ["Medical", "Travel copy", "Ready"],
+        drive_link: "",
         fields: {
           Location: "Kitchen command drawer",
           Backup: "Phone PDFs + cloud vault",
