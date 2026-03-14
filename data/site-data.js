@@ -110,7 +110,9 @@ window.familyControlData = {
       description: "Compact launcher for the Family Control Center Google Drive structure."
     },
     chrome: {
-      sidebarEyebrow: "Drive status"
+      sidebarEyebrow: "Drive status",
+      heroTitle: "Family Control Center",
+      heroCopy: "Organized access to the documents and instructions your family may need."
     },
     readinessScore: "11 folders",
     readinessText: "Top-level structure only. Replace each folder card with its real Google Drive link.",

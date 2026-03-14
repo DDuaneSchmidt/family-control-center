@@ -98,24 +98,27 @@
     }
 
     target.innerHTML = folders.map(function (folder) {
-      return [
-        '<article class="folder-card' + (compact ? " folder-card-compact" : "") + '">',
+      const isLinked = folder.drive_link && folder.drive_link !== "REPLACE_WITH_GOOGLE_DRIVE_LINK";
+      const tag = '<span class="folder-category">' + escapeHtml(folder.category) + "</span>";
+      const body = [
         '<div class="folder-card-top">',
-        '<span class="tag">' + escapeHtml(folder.category) + "</span>",
-        folder.last_reviewed ? '<span class="tag">Reviewed ' + escapeHtml(folder.last_reviewed) + "</span>" : "",
+        tag,
         "</div>",
         '<h3 class="folder-title">' + escapeHtml(folder.title) + "</h3>",
-        '<p class="folder-copy">' + escapeHtml(folder.description) + "</p>",
-        '<div class="card-actions">',
-        renderButtonMarkup([
-          {
-            label: folder.drive_link === "REPLACE_WITH_GOOGLE_DRIVE_LINK" ? "Add Drive link" : "Open folder",
-            href: folder.drive_link === "REPLACE_WITH_GOOGLE_DRIVE_LINK" ? "documents.html" : folder.drive_link,
-            variant: folder.drive_link === "REPLACE_WITH_GOOGLE_DRIVE_LINK" ? "ghost" : "primary",
-            external: folder.drive_link !== "REPLACE_WITH_GOOGLE_DRIVE_LINK"
-          }
-        ]),
-        "</div>",
+        '<p class="folder-copy">' + escapeHtml(folder.description) + "</p>"
+      ].join("");
+
+      if (isLinked) {
+        return [
+          '<a class="folder-card folder-card-link folder-card-accent-' + categorySlug(folder.category) + (compact ? " folder-card-compact" : "") + '" href="' + escapeAttribute(folder.drive_link) + '" target="_blank" rel="noreferrer">',
+          body,
+          "</a>"
+        ].join("");
+      }
+
+      return [
+        '<article class="folder-card folder-card-disabled folder-card-accent-' + categorySlug(folder.category) + (compact ? " folder-card-compact" : "") + '">',
+        body,
         "</article>"
       ].join("");
     }).join("");
@@ -125,16 +128,8 @@
     return document.getElementById("folderGrid") ? "folderGrid" : "documentsTable";
   }
 
-  function renderButtonMarkup(items) {
-    return items.map(function (item) {
-      const externalAttrs = item.external ? ' target="_blank" rel="noreferrer"' : "";
-
-      return [
-        '<a class="button button-' + escapeHtml(item.variant || "secondary") + '" href="' + escapeAttribute(item.href) + '"' + externalAttrs + ">",
-        escapeHtml(item.label),
-        "</a>"
-      ].join("");
-    }).join("");
+  function categorySlug(value) {
+    return String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   }
 
   function setText(id, value) {
