@@ -63,10 +63,7 @@
     renderChrome(section.chrome);
     setText("readinessScore", section.readinessScore);
     setText("readinessText", section.readinessText);
-    renderButtons("heroActions", section.heroActions);
     renderFolderTiles("dashboardCards", resolveFolders(section.folderIds, site), true);
-    hideIfEmpty("heroMetrics", true);
-    hideParentPanel("householdStatus", true);
   }
 
   function renderFolderPage(section, site) {
@@ -128,16 +125,6 @@
     return document.getElementById("folderGrid") ? "folderGrid" : "documentsTable";
   }
 
-  function renderButtons(id, items) {
-    const target = document.getElementById(id);
-
-    if (!target || !items) {
-      return;
-    }
-
-    target.innerHTML = renderButtonMarkup(items);
-  }
-
   function renderButtonMarkup(items) {
     return items.map(function (item) {
       const externalAttrs = item.external ? ' target="_blank" rel="noreferrer"' : "";
@@ -148,28 +135,6 @@
         "</a>"
       ].join("");
     }).join("");
-  }
-
-  function hideParentPanel(id, shouldHide) {
-    const element = document.getElementById(id);
-
-    if (!element) {
-      return;
-    }
-
-    const panel = element.closest(".panel");
-
-    if (panel) {
-      panel.hidden = shouldHide;
-    }
-  }
-
-  function hideIfEmpty(id, shouldHide) {
-    const element = document.getElementById(id);
-
-    if (element) {
-      element.hidden = shouldHide;
-    }
   }
 
   function setText(id, value) {

@@ -110,19 +110,10 @@ window.familyControlData = {
       description: "Compact launcher for the Family Control Center Google Drive structure."
     },
     chrome: {
-      sidebarEyebrow: "Drive status",
-      heroEyebrow: "Family Control Center",
-      heroTitle: "Compact access to the folders that matter.",
-      heroCopy: "Open the real top-level Google Drive structure without demo data, long summaries, or unnecessary scrolling.",
-      dashboardEyebrow: "Top-level folders",
-      dashboardTitle: "Primary sections",
-      dashboardCopy: "Each tile links to a real top-level folder in the Family Control Center drive."
+      sidebarEyebrow: "Drive status"
     },
     readinessScore: "11 folders",
     readinessText: "Top-level structure only. Replace each folder card with its real Google Drive link.",
-    heroActions: [
-      { label: "Open all folders", href: "documents.html", variant: "primary" }
-    ],
     folderIds: [
       "00_START_HERE",
       "01_If_David_Dies",
