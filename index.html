@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Family Control Center</title>
   <meta name="description" content="Premium household dashboard for accounts, insurance, contacts, documents, and emergency readiness.">
+  <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -13,14 +14,20 @@
 <body data-page="dashboard">
   <div class="site-shell">
     <aside class="sidebar">
-      <a class="brand" href="index.html">
-        <span class="brand-mark">FC</span>
-        <div>
-          <span class="brand-title">Family Control Center</span>
-          <span class="brand-subtitle">Household command dashboard</span>
-        </div>
-      </a>
-      <nav class="sidebar-nav" aria-label="Primary navigation">
+      <div class="sidebar-top">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">FC</span>
+          <div>
+            <span class="brand-title">Family Control Center</span>
+            <span class="brand-subtitle">Household command dashboard</span>
+          </div>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="sidebar-nav" id="primary-nav" aria-label="Primary navigation">
         <a href="index.html" data-nav="dashboard">Dashboard</a>
         <a href="accounts.html" data-nav="accounts">Accounts</a>
         <a href="insurance.html" data-nav="insurance">Insurance</a>

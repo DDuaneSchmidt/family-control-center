@@ -71,6 +71,13 @@ a {
   border-bottom: 1px solid var(--line);
 }
 
+.sidebar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -114,9 +121,35 @@ a {
 }
 
 .sidebar-nav {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.5rem;
+}
+
+body.nav-open .sidebar-nav {
+  display: grid;
+}
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 2.9rem;
+  height: 2.9rem;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.82);
+  color: var(--text);
+}
+
+.nav-toggle span {
+  width: 1rem;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
 }
 
 .sidebar-nav a,
@@ -516,6 +549,11 @@ h3 {
 
   .sidebar-nav {
     grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .nav-toggle {
+    display: none;
   }
 
   .main-content {
@@ -538,5 +576,66 @@ h3 {
 
   .table-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #111827;
+  }
+
+  body::before,
+  .sidebar,
+  .hero-actions,
+  .card-actions,
+  .nav-toggle {
+    display: none !important;
+  }
+
+  .site-shell {
+    display: block;
+  }
+
+  .main-content {
+    display: block;
+    padding: 0;
+  }
+
+  .panel,
+  .page-header,
+  .hero,
+  .record-card,
+  .action-card,
+  .metric-card,
+  .stat-card {
+    background: #fff;
+    color: #111827;
+    border: 1px solid #d1d5db;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .eyebrow,
+  .muted,
+  .brand-subtitle,
+  .section-copy,
+  .card-copy {
+    color: #4b5563;
+  }
+
+  body[data-page="emergency"] .page-header,
+  body[data-page="documents"] .page-header {
+    margin-bottom: 1rem;
+  }
+
+  body[data-page="emergency"] .detail-grid,
+  body[data-page="documents"] .table-grid {
+    display: block;
+  }
+
+  body[data-page="emergency"] .panel,
+  body[data-page="documents"] .panel {
+    margin-bottom: 1rem;
   }
 }

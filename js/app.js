@@ -7,6 +7,7 @@
 
   const page = document.body.dataset.page;
   setActiveNav(page);
+  initNavToggle();
 
   if (page === "dashboard") {
     renderDashboard(data.dashboard);
@@ -19,6 +20,34 @@
     document.querySelectorAll("[data-nav]").forEach(function (link) {
       if (link.dataset.nav === currentPage) {
         link.classList.add("is-active");
+      }
+    });
+  }
+
+  function initNavToggle() {
+    const button = document.querySelector(".nav-toggle");
+    const nav = document.getElementById("primary-nav");
+
+    if (!button || !nav) {
+      return;
+    }
+
+    button.addEventListener("click", function () {
+      const isOpen = document.body.classList.toggle("nav-open");
+      button.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    nav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        document.body.classList.remove("nav-open");
+        button.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth >= 1100) {
+        document.body.classList.remove("nav-open");
+        button.setAttribute("aria-expanded", "false");
       }
     });
   }
