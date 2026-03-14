@@ -10,11 +10,11 @@
   initNavToggle();
 
   if (page === "dashboard") {
-    renderDashboard(data.dashboard);
+    renderDashboard(data.dashboard, data.site);
     return;
   }
 
-  renderInnerPage(page, data[page]);
+  renderFolderPage(data[page], data.site);
 
   function renderSiteChrome(site, currentPage) {
     if (!site) {
@@ -50,13 +50,6 @@
       button.setAttribute("aria-expanded", String(isOpen));
     });
 
-    nav.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        document.body.classList.remove("nav-open");
-        button.setAttribute("aria-expanded", "false");
-      });
-    });
-
     window.addEventListener("resize", function () {
       if (window.innerWidth >= 1100) {
         document.body.classList.remove("nav-open");
@@ -65,18 +58,18 @@
     });
   }
 
-  function renderDashboard(dashboard) {
-    applyPageMeta(dashboard.pageMeta);
-    renderChrome(dashboard.chrome);
-    setText("readinessScore", dashboard.readinessScore);
-    setText("readinessText", dashboard.readinessText);
-    renderButtons("heroActions", dashboard.heroActions);
-    renderMetricCards("heroMetrics", dashboard.heroMetrics);
-    renderStatCards("householdStatus", dashboard.householdStatus);
-    renderDashboardCards("dashboardCards", dashboard.sections);
+  function renderDashboard(section, site) {
+    applyPageMeta(section.pageMeta);
+    renderChrome(section.chrome);
+    setText("readinessScore", section.readinessScore);
+    setText("readinessText", section.readinessText);
+    renderButtons("heroActions", section.heroActions);
+    renderFolderTiles("dashboardCards", resolveFolders(section.folderIds, site), true);
+    hideIfEmpty("heroMetrics", true);
+    hideParentPanel("householdStatus", true);
   }
 
-  function renderInnerPage(currentPage, section) {
+  function renderFolderPage(section, site) {
     if (!section) {
       return;
     }
@@ -85,151 +78,54 @@
     renderChrome(section.chrome);
     setText("pageAsideTitle", section.aside.title);
     setText("pageAsideText", section.aside.text);
-
-    if (section.stats) {
-      renderStatCards(currentPage + "Stats", section.stats);
-    }
-
-    if (section.records) {
-      renderRecordCards(currentPage + "Table", section.records);
-    }
-
-    if (currentPage === "emergency") {
-      renderActionCards("emergencyActions", section.actions);
-      renderActionCards("emergencyPreparedness", section.preparedness);
-    }
+    renderFolderTiles(pageFolderTarget(), resolveFolders(section.folderIds, site), false);
   }
 
-  function renderMetricCards(id, items) {
+  function resolveFolders(folderIds, site) {
+    if (!folderIds || !site || !site.folders) {
+      return [];
+    }
+
+    return folderIds.map(function (folderId) {
+      return site.folders.find(function (folder) {
+        return folder.id === folderId;
+      });
+    }).filter(Boolean);
+  }
+
+  function renderFolderTiles(id, folders, compact) {
     const target = document.getElementById(id);
 
     if (!target) {
       return;
     }
 
-    target.innerHTML = items.map(function (item) {
+    target.innerHTML = folders.map(function (folder) {
       return [
-        '<article class="metric-card">',
-        '<p class="eyebrow">' + escapeHtml(item.label) + "</p>",
-        '<strong class="metric-value">' + escapeHtml(item.value) + "</strong>",
-        '<p class="muted">' + escapeHtml(item.note) + "</p>",
+        '<article class="folder-card' + (compact ? " folder-card-compact" : "") + '">',
+        '<div class="folder-card-top">',
+        '<span class="tag">' + escapeHtml(folder.category) + "</span>",
+        folder.last_reviewed ? '<span class="tag">Reviewed ' + escapeHtml(folder.last_reviewed) + "</span>" : "",
+        "</div>",
+        '<h3 class="folder-title">' + escapeHtml(folder.title) + "</h3>",
+        '<p class="folder-copy">' + escapeHtml(folder.description) + "</p>",
+        '<div class="card-actions">',
+        renderButtonMarkup([
+          {
+            label: folder.drive_link === "REPLACE_WITH_GOOGLE_DRIVE_LINK" ? "Add Drive link" : "Open folder",
+            href: folder.drive_link === "REPLACE_WITH_GOOGLE_DRIVE_LINK" ? "documents.html" : folder.drive_link,
+            variant: folder.drive_link === "REPLACE_WITH_GOOGLE_DRIVE_LINK" ? "ghost" : "primary",
+            external: folder.drive_link !== "REPLACE_WITH_GOOGLE_DRIVE_LINK"
+          }
+        ]),
+        "</div>",
         "</article>"
       ].join("");
     }).join("");
   }
 
-  function renderStatCards(id, items) {
-    const target = document.getElementById(id);
-
-    if (!target) {
-      return;
-    }
-
-    target.innerHTML = items.map(function (item) {
-      return [
-        '<article class="stat-card">',
-        '<p class="eyebrow">' + escapeHtml(item.label) + "</p>",
-        '<strong class="stat-value">' + escapeHtml(item.value) + "</strong>",
-        '<p class="muted">' + escapeHtml(item.note) + "</p>",
-        "</article>"
-      ].join("");
-    }).join("");
-  }
-
-  // Dashboard cards share a structured schema: eyebrow, title, copy, facts, actions.
-  function renderDashboardCards(id, items) {
-    const target = document.getElementById(id);
-
-    if (!target) {
-      return;
-    }
-
-    target.innerHTML = items.map(function (item) {
-      const facts = item.facts.map(function (fact) {
-        return '<li>' + escapeHtml(fact) + "</li>";
-      }).join("");
-
-      const actions = item.actions ? renderButtonMarkup(item.actions) : "";
-
-      return [
-        '<article class="panel summary-card structured-card">',
-        '<div class="card-header">',
-        "<div>",
-        '<p class="eyebrow">' + escapeHtml(item.eyebrow) + "</p>",
-        '<h3 class="card-title">' + escapeHtml(item.title) + "</h3>",
-        "</div>",
-        "</div>",
-        '<p class="card-copy">' + escapeHtml(item.description) + "</p>",
-        '<ul class="bullet-list">' + facts + "</ul>",
-        '<div class="card-actions">' + actions + "</div>",
-        "</article>"
-      ].join("");
-    }).join("");
-  }
-
-  // Generic record renderer used by accounts, insurance, contacts, and documents.
-  function renderRecordCards(id, items) {
-    const target = document.getElementById(id);
-
-    if (!target) {
-      return;
-    }
-
-    target.innerHTML = items.map(function (item) {
-      const fields = Object.keys(item.fields).map(function (key) {
-        return [
-          "<div>",
-          "<strong>" + escapeHtml(key) + "</strong>",
-          "<span>" + escapeHtml(item.fields[key]) + "</span>",
-          "</div>"
-        ].join("");
-      }).join("");
-
-      const tags = item.tags.filter(function (tag) {
-        return tag !== item.category;
-      }).map(function (tag) {
-        return '<span class="tag">' + escapeHtml(tag) + "</span>";
-      }).join("");
-
-      const descriptor = item.description || item.subtitle || "";
-      const categoryTag = item.category ? '<span class="tag">' + escapeHtml(item.category) + "</span>" : "";
-      const driveAction = item.drive_link ? renderButtonMarkup([
-        { label: "Open Drive", href: item.drive_link, variant: "secondary", external: true }
-      ]) : "";
-      const lastReviewed = item.last_reviewed ? '<span class="tag">Reviewed ' + escapeHtml(item.last_reviewed) + "</span>" : "";
-
-      return [
-        '<article class="record-card">',
-        '<div class="record-header">',
-        "<div>",
-        '<h3 class="record-title">' + escapeHtml(item.title) + "</h3>",
-        '<p class="muted">' + escapeHtml(descriptor) + "</p>",
-        "</div>",
-        "</div>",
-        '<div class="record-meta">' + categoryTag + tags + lastReviewed + "</div>",
-        '<div class="record-grid">' + fields + "</div>",
-        driveAction ? '<div class="card-actions">' + driveAction + "</div>" : "",
-        "</article>"
-      ].join("");
-    }).join("");
-  }
-
-  // Emergency page list renderer.
-  function renderActionCards(id, items) {
-    const target = document.getElementById(id);
-
-    if (!target) {
-      return;
-    }
-
-    target.innerHTML = '<div class="action-list">' + items.map(function (item) {
-      return [
-        '<article class="action-card">',
-        '<strong class="action-title">' + escapeHtml(item.title) + "</strong>",
-        '<p class="muted">' + escapeHtml(item.note) + "</p>",
-        "</article>"
-      ].join("");
-    }).join("") + "</div>";
+  function pageFolderTarget() {
+    return document.getElementById("folderGrid") ? "folderGrid" : "documentsTable";
   }
 
   function renderButtons(id, items) {
@@ -252,6 +148,28 @@
         "</a>"
       ].join("");
     }).join("");
+  }
+
+  function hideParentPanel(id, shouldHide) {
+    const element = document.getElementById(id);
+
+    if (!element) {
+      return;
+    }
+
+    const panel = element.closest(".panel");
+
+    if (panel) {
+      panel.hidden = shouldHide;
+    }
+  }
+
+  function hideIfEmpty(id, shouldHide) {
+    const element = document.getElementById(id);
+
+    if (element) {
+      element.hidden = shouldHide;
+    }
   }
 
   function setText(id, value) {
