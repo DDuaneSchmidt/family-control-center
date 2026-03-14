@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emergency | Family Control Center</title>
+  <meta name="description" content="Emergency readiness dashboard for first actions, go-bag items, medical needs, and safe meeting details.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body data-page="emergency">
+  <div class="site-shell">
+    <aside class="sidebar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">FC</span>
+        <div>
+          <span class="brand-title">Family Control Center</span>
+          <span class="brand-subtitle">Household command dashboard</span>
+        </div>
+      </a>
+      <nav class="sidebar-nav" aria-label="Primary navigation">
+        <a href="index.html" data-nav="dashboard">Dashboard</a>
+        <a href="accounts.html" data-nav="accounts">Accounts</a>
+        <a href="insurance.html" data-nav="insurance">Insurance</a>
+        <a href="contacts.html" data-nav="contacts">Contacts</a>
+        <a href="documents.html" data-nav="documents">Documents</a>
+        <a href="emergency.html" data-nav="emergency">Emergency</a>
+      </nav>
+      <section class="sidebar-panel">
+        <p class="eyebrow">Readiness focus</p>
+        <strong id="pageAsideTitle">Loading</strong>
+        <p id="pageAsideText">Preparing emergency overview</p>
+      </section>
+    </aside>
+
+    <main class="main-content">
+      <header class="page-header">
+        <p class="eyebrow">Emergency</p>
+        <h1>Readiness details when speed matters most.</h1>
+        <p class="hero-copy">Keep emergency instructions, supplies, key contacts, and critical household actions structured and easy to scan.</p>
+      </header>
+
+      <section class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Summary</p>
+            <h2>Emergency posture</h2>
+          </div>
+        </div>
+        <div class="stats-grid" id="emergencyStats"></div>
+      </section>
+
+      <section class="detail-grid">
+        <article class="panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">First actions</p>
+              <h2>Immediate steps</h2>
+            </div>
+          </div>
+          <div id="emergencyActions"></div>
+        </article>
+
+        <article class="panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Preparedness</p>
+              <h2>Go-bag and medical essentials</h2>
+            </div>
+          </div>
+          <div id="emergencyPreparedness"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="data/site-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
