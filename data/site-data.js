@@ -103,15 +103,6 @@ window.familyControlData = {
         // Google Drive folder link for 09_Technical_Help
         drive_link: "https://drive.google.com/drive/folders/1ezymFVF2zug5y1meQ1gl9xn9jOpDk2R4",
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
-      },
-      {
-        id: "10_Archive",
-        title: "10_Archive",
-        category: "Archive",
-        description: "Older materials kept for reference",
-        // Google Drive folder link for 10_Archive
-        drive_link: "https://drive.google.com/drive/folders/1xhyon7P9Gjami1v0pa8B1QB7N9iIPZ26",
-        last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       }
     ]
   },
@@ -125,7 +116,7 @@ window.familyControlData = {
       heroTitle: "Family Control Center",
       heroCopy: "Organized access to the documents and instructions your family may need."
     },
-    readinessScore: "11 folders",
+    readinessScore: "10 folders",
     readinessText: "Top-level structure only. Replace each folder card with its real Google Drive link.",
     folderIds: [
       "00_START_HERE",
@@ -137,8 +128,7 @@ window.familyControlData = {
       "06_Insurance",
       "07_Documents_and_Locations",
       "08_Constellation_Continuity",
-      "09_Technical_Help",
-      "10_Archive"
+      "09_Technical_Help"
     ]
   },
   accounts: {
@@ -219,7 +209,7 @@ window.familyControlData = {
       recordsTitle: "Top-level folders"
     },
     aside: {
-      title: "11 folders",
+      title: "10 folders",
       text: "One card per top-level folder, with a placeholder drive link until the real URL is inserted."
     },
     folderIds: [
@@ -232,8 +222,7 @@ window.familyControlData = {
       "06_Insurance",
       "07_Documents_and_Locations",
       "08_Constellation_Continuity",
-      "09_Technical_Help",
-      "10_Archive"
+      "09_Technical_Help"
     ]
   },
   emergency: {
