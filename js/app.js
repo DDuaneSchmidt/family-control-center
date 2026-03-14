@@ -14,6 +14,11 @@
     return;
   }
 
+  if (page === "section-detail") {
+    renderSectionDetail(data.site);
+    return;
+  }
+
   renderFolderPage(data[page], data.site);
 
   function renderSiteChrome(site, currentPage) {
@@ -30,8 +35,10 @@
       return;
     }
 
+    const activePage = document.body.dataset.navActive || currentPage;
+
     nav.innerHTML = site.navigation.map(function (item) {
-      const active = item.id === currentPage ? " is-active" : "";
+      const active = item.id === activePage ? " is-active" : "";
 
       return '<a href="' + escapeAttribute(item.href) + '" data-nav="' + escapeAttribute(item.id) + '" class="' + active.trim() + '">' + escapeHtml(item.label) + "</a>";
     }).join("");
@@ -78,6 +85,36 @@
     renderFolderTiles(pageFolderTarget(), resolveFolders(section.folderIds, site), false);
   }
 
+  function renderSectionDetail(site) {
+    if (!site || !site.folders) {
+      return;
+    }
+
+    const sectionId = document.body.dataset.sectionId;
+    const folder = site.folders.find(function (item) {
+      return item.id === sectionId;
+    });
+
+    if (!folder) {
+      return;
+    }
+
+    applyPageMeta({
+      title: folder.title + " | Family Control Center",
+      description: folder.description
+    });
+    setText("sidebarEyebrow", folder.category + " section");
+    setText("pageAsideTitle", folder.last_reviewed === "REPLACE_WITH_LAST_REVIEWED" ? "Review date pending" : "Reviewed " + folder.last_reviewed);
+    setText("pageAsideText", "Read the guidance here before opening the Google Drive folder.");
+    setText("pageEyebrow", folder.category);
+    setText("pageTitle", folder.title);
+    setText("pageCopy", folder.description);
+    setText("whatThisIsFor", folder.what_this_is_for);
+    setText("whatToDoFirst", folder.what_to_do_first);
+    renderNotes("importantNotes", folder.important_notes || []);
+    renderDriveAction(folder);
+  }
+
   function resolveFolders(folderIds, site) {
     if (!folderIds || !site || !site.folders) {
       return [];
@@ -98,7 +135,7 @@
     }
 
     target.innerHTML = folders.map(function (folder) {
-      const isLinked = folder.drive_link && folder.drive_link !== "REPLACE_WITH_GOOGLE_DRIVE_LINK";
+      const hasDetailPage = Boolean(folder.detail_page);
       const tag = '<span class="folder-category">' + escapeHtml(folder.category) + "</span>";
       const body = [
         '<div class="folder-card-top">',
@@ -108,9 +145,9 @@
         '<p class="folder-copy">' + escapeHtml(folder.description) + "</p>"
       ].join("");
 
-      if (isLinked) {
+      if (hasDetailPage) {
         return [
-          '<a class="folder-card folder-card-link folder-card-accent-' + categorySlug(folder.category) + (compact ? " folder-card-compact" : "") + '" href="' + escapeAttribute(folder.drive_link) + '" target="_blank" rel="noreferrer">',
+          '<a class="folder-card folder-card-link folder-card-accent-' + categorySlug(folder.category) + (compact ? " folder-card-compact" : "") + '" href="' + escapeAttribute(folder.detail_page) + '">',
           body,
           "</a>"
         ].join("");
@@ -126,6 +163,34 @@
 
   function pageFolderTarget() {
     return document.getElementById("folderGrid") ? "folderGrid" : "documentsTable";
+  }
+
+  function renderNotes(id, items) {
+    const target = document.getElementById(id);
+
+    if (!target) {
+      return;
+    }
+
+    target.innerHTML = items.map(function (item) {
+      return "<li>" + escapeHtml(item) + "</li>";
+    }).join("");
+  }
+
+  function renderDriveAction(folder) {
+    const target = document.getElementById("driveFolderLink");
+
+    if (!target) {
+      return;
+    }
+
+    if (folder.drive_link && folder.drive_link !== "REPLACE_WITH_GOOGLE_DRIVE_LINK") {
+      target.href = folder.drive_link;
+      target.hidden = false;
+      return;
+    }
+
+    target.hidden = true;
   }
 
   function categorySlug(value) {

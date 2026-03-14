@@ -209,6 +209,41 @@ body.nav-open .sidebar-nav {
   align-content: start;
 }
 
+.detail-guidance-grid {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.detail-card {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.detail-copy {
+  color: #dbe7f5;
+  line-height: 1.5;
+}
+
+.note-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding-left: 1.1rem;
+  color: #dbe7f5;
+  line-height: 1.45;
+}
+
+.detail-action-panel {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.detail-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 .dashboard-header {
   display: grid;
   gap: 0.16rem;
@@ -489,6 +524,16 @@ h3 {
   font-size: 0.76rem;
 }
 
+body[data-page="section-detail"] .page-header {
+  gap: 0.5rem;
+  padding: 0.9rem 1rem;
+}
+
+body[data-page="section-detail"] .page-header h1 {
+  max-width: none;
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+}
+
 .folder-card-accent-core {
   --category-accent: #3b82f6;
 }
@@ -628,6 +673,10 @@ h3 {
   }
 
   .compact-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .detail-guidance-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

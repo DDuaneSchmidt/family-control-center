@@ -19,8 +19,16 @@ window.familyControlData = {
         title: "00_START_HERE",
         category: "Core",
         description: "Where someone should begin",
+        detail_page: "section-start-here.html",
         // Google Drive folder link for 00_START_HERE
         drive_link: "https://drive.google.com/drive/folders/1mIgo0a6Z-R2wLOff15PzSkcYUM8rPAXM",
+        what_this_is_for: "This is the starting point for the whole Family Control Center system.",
+        what_to_do_first: "Read this section before opening other folders so you understand how the system is organized.",
+        important_notes: [
+          "Use this page first when you are orienting yourself or helping someone else.",
+          "Move to other sections only after you understand where to find the most important materials.",
+          "If something urgent has happened, use this section to get grounded before acting."
+        ],
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -28,8 +36,16 @@ window.familyControlData = {
         title: "01_If_David_Dies",
         category: "Emergency",
         description: "Immediate steps, first 30 days, and first 90 days",
+        detail_page: "section-if-david-dies.html",
         // Google Drive folder link for 01_If_David_Dies
         drive_link: "https://drive.google.com/drive/folders/1lvHJ0BhXY63YuQZ9XGEybKVJIx2QUZF_",
+        what_this_is_for: "This section covers immediate and short-term steps if David dies.",
+        what_to_do_first: "Review the immediate steps and contact the right people before making other decisions.",
+        important_notes: [
+          "Start with urgent tasks and communications before moving into longer-term administration.",
+          "Use the contact guidance so legal, financial, and family notifications happen in the right order.",
+          "Return here during the first 30 and 90 days as priorities change."
+        ],
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -37,8 +53,16 @@ window.familyControlData = {
         title: "02_Household_Financial_Map",
         category: "Financial",
         description: "How the household financial system works",
+        detail_page: "section-household-financial-map.html",
         // Google Drive folder link for 02_Household_Financial_Map
         drive_link: "https://drive.google.com/drive/folders/1WYlQseFcwUYElB0zVvYjIZhlG18IFt2I",
+        what_this_is_for: "This section explains how household money, responsibilities, and account relationships are organized.",
+        what_to_do_first: "Review how bills, accounts, and income flow work before changing anything.",
+        important_notes: [
+          "Use this section to understand the system before taking actions in account-specific folders.",
+          "It is the best place to see how different financial tasks connect to each other.",
+          "Check this map first if something seems missing or unclear."
+        ],
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -46,8 +70,16 @@ window.familyControlData = {
         title: "03_Important_Contacts",
         category: "Contacts",
         description: "Key people to call for help",
+        detail_page: "section-important-contacts.html",
         // Google Drive folder link for 03_Important_Contacts
         drive_link: "https://drive.google.com/drive/folders/1_EtA0X3SDD-KwDkTefCDuA3aXg7DYhzz",
+        what_this_is_for: "This section lists the key people to contact for legal, financial, and technical help.",
+        what_to_do_first: "Contact the most relevant person before making major decisions or trying to solve everything alone.",
+        important_notes: [
+          "Use the right contact for the issue instead of guessing who should handle it.",
+          "Early outreach can prevent delays, mistakes, and duplicated work.",
+          "Pair this section with If_David_Dies when urgent coordination is needed."
+        ],
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -55,8 +87,16 @@ window.familyControlData = {
         title: "04_Accounts_and_Assets",
         category: "Financial",
         description: "Banking, assets, and account records",
+        detail_page: "section-accounts-and-assets.html",
         // Google Drive folder link for 04_Accounts_and_Assets
         drive_link: "https://drive.google.com/drive/folders/1nvinZqyucxM10h1ifxF0TqwBWXoRNQAM",
+        what_this_is_for: "This section contains records and references for financial accounts and assets.",
+        what_to_do_first: "Identify the most important accounts first so urgent access and visibility are established.",
+        important_notes: [
+          "Start with accounts tied to liquidity, income, or essential household obligations.",
+          "Use this folder together with the Household Financial Map for context.",
+          "Do not make transfer or closure decisions until the overall picture is clear."
+        ],
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -64,8 +104,16 @@ window.familyControlData = {
         title: "05_Bills_and_Payments",
         category: "Financial",
         description: "Recurring bills, payment instructions, and autopay",
+        detail_page: "section-bills-and-payments.html",
         // Google Drive folder link for 05_Bills_and_Payments
         drive_link: "https://drive.google.com/drive/folders/1BIADF74Ilrh3ti6YCZ_j7jijRfkHqq09",
+        what_this_is_for: "This section holds recurring payment instructions and bill references.",
+        what_to_do_first: "Check which bills are urgent, which are automated, and which can wait.",
+        important_notes: [
+          "Focus first on housing, utilities, insurance, taxes, and other continuity-critical payments.",
+          "Confirm whether an autopay is active before making a manual payment.",
+          "Use this with the financial map so payment responsibilities stay coordinated."
+        ],
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -73,8 +121,16 @@ window.familyControlData = {
         title: "06_Insurance",
         category: "Insurance",
         description: "Policies, coverage, and claim contacts",
+        detail_page: "section-insurance.html",
         // Google Drive folder link for 06_Insurance
         drive_link: "https://drive.google.com/drive/folders/1z9HP47niSgy5xOx8myQ1FntXwtX4moBs",
+        what_this_is_for: "This section holds policy records, claim information, and coverage references.",
+        what_to_do_first: "Identify which policy applies before opening supporting documents or contacting a carrier.",
+        important_notes: [
+          "Coverage types and claim steps differ, so verify the policy before acting.",
+          "Use this section before filing claims or requesting policy changes.",
+          "If an urgent event occurred, cross-check this with the emergency guidance."
+        ],
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -82,8 +138,16 @@ window.familyControlData = {
         title: "07_Documents_and_Locations",
         category: "Documents",
         description: "Important records and where they are stored",
+        detail_page: "section-documents-and-locations.html",
         // Google Drive folder link for 07_Documents_and_Locations
         drive_link: "https://drive.google.com/drive/folders/1xXAzlcLhILbct8TKDcVE8dsAVLj6WvVn",
+        what_this_is_for: "This section guides you to important records and where they are stored.",
+        what_to_do_first: "Use this section to locate documents before searching elsewhere.",
+        important_notes: [
+          "This is the reference point when you know a document exists but not where it lives.",
+          "Check here before assuming something is missing.",
+          "Use it to connect physical records, digital files, and storage locations."
+        ],
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -91,8 +155,16 @@ window.familyControlData = {
         title: "08_Constellation_Continuity",
         category: "Constellation",
         description: "Constellation-related continuity materials",
+        detail_page: "section-constellation-continuity.html",
         // Google Drive folder link for 08_Constellation_Continuity
         drive_link: "https://drive.google.com/drive/folders/178Ek_RN7kuYFGAaSvHFPlaS1pE7Sr7Q7",
+        what_this_is_for: "This section contains continuity information related to Constellation.",
+        what_to_do_first: "Open this only if continuity steps are needed and review the operating context first.",
+        important_notes: [
+          "This material is for continuity needs, not general household administration.",
+          "Use it when business continuity or handoff questions must be answered.",
+          "If the need is urgent, pair this with the emergency guidance."
+        ],
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       },
       {
@@ -100,8 +172,33 @@ window.familyControlData = {
         title: "09_Technical_Help",
         category: "Support",
         description: "Instructions for technical systems and support",
+        detail_page: "section-technical-help.html",
         // Google Drive folder link for 09_Technical_Help
         drive_link: "https://drive.google.com/drive/folders/1ezymFVF2zug5y1meQ1gl9xn9jOpDk2R4",
+        what_this_is_for: "This section provides technical access and support instructions.",
+        what_to_do_first: "Use it when systems, devices, or account access are blocked or unclear.",
+        important_notes: [
+          "Start here before resetting accounts or changing technical configurations.",
+          "Use the documented recovery steps instead of improvising under pressure.",
+          "Pair this with Important Contacts if outside help is needed."
+        ],
+        last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
+      },
+      {
+        id: "10_Archive",
+        title: "10_Archive",
+        category: "Archive",
+        description: "Older materials kept for reference",
+        detail_page: "section-archive.html",
+        // Google Drive folder link for 10_Archive
+        drive_link: "https://drive.google.com/drive/folders/1xhyon7P9Gjami1v0pa8B1QB7N9iIPZ26",
+        what_this_is_for: "This section stores older materials kept for reference.",
+        what_to_do_first: "Use it only if something is not found in the active folders.",
+        important_notes: [
+          "Treat archived materials as historical reference, not the first source for action.",
+          "Check active folders before relying on archived records.",
+          "Use this section to recover context when current files do not answer the question."
+        ],
         last_reviewed: "REPLACE_WITH_LAST_REVIEWED"
       }
     ]
@@ -116,7 +213,7 @@ window.familyControlData = {
       heroTitle: "Family Control Center",
       heroCopy: "Organized access to the documents and instructions your family may need."
     },
-    readinessScore: "10 folders",
+    readinessScore: "11 folders",
     readinessText: "Top-level structure only. Replace each folder card with its real Google Drive link.",
     folderIds: [
       "00_START_HERE",
@@ -128,7 +225,8 @@ window.familyControlData = {
       "06_Insurance",
       "07_Documents_and_Locations",
       "08_Constellation_Continuity",
-      "09_Technical_Help"
+      "09_Technical_Help",
+      "10_Archive"
     ]
   },
   accounts: {
@@ -209,7 +307,7 @@ window.familyControlData = {
       recordsTitle: "Top-level folders"
     },
     aside: {
-      title: "10 folders",
+      title: "11 folders",
       text: "One card per top-level folder, with a placeholder drive link until the real URL is inserted."
     },
     folderIds: [
@@ -222,7 +320,8 @@ window.familyControlData = {
       "06_Insurance",
       "07_Documents_and_Locations",
       "08_Constellation_Continuity",
-      "09_Technical_Help"
+      "09_Technical_Help",
+      "10_Archive"
     ]
   },
   emergency: {
