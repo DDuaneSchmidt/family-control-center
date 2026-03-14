@@ -1,5 +1,32 @@
 window.familyControlData = {
+  site: {
+    brandTitle: "Family Control Center",
+    brandSubtitle: "Household command dashboard",
+    navigation: [
+      { id: "dashboard", label: "Dashboard", href: "index.html" },
+      { id: "accounts", label: "Accounts", href: "accounts.html" },
+      { id: "insurance", label: "Insurance", href: "insurance.html" },
+      { id: "contacts", label: "Contacts", href: "contacts.html" },
+      { id: "documents", label: "Documents", href: "documents.html" },
+      { id: "emergency", label: "Emergency", href: "emergency.html" }
+    ]
+  },
   dashboard: {
+    pageMeta: {
+      title: "Family Control Center",
+      description: "Premium household dashboard for accounts, insurance, contacts, documents, and emergency readiness."
+    },
+    chrome: {
+      sidebarEyebrow: "Readiness",
+      heroEyebrow: "Household Status",
+      heroTitle: "Premium oversight for the details that matter.",
+      heroCopy: "Track financial readiness, protection gaps, essential contacts, documents, and emergency preparation in one static control center.",
+      statusEyebrow: "Snapshot",
+      statusTitle: "Household pulse",
+      dashboardEyebrow: "Control dashboard",
+      dashboardTitle: "Priority sections",
+      dashboardCopy: "Each card summarizes the current state, highlights key facts, and provides direct next actions."
+    },
     readinessScore: "92%",
     readinessText: "Core records organized, coverage active, and emergency steps documented.",
     heroActions: [
@@ -82,6 +109,20 @@ window.familyControlData = {
     ]
   },
   accounts: {
+    pageMeta: {
+      title: "Accounts | Family Control Center",
+      description: "Household accounts overview for banking, brokerage, retirement, and cash reserve visibility."
+    },
+    chrome: {
+      sidebarEyebrow: "Accounts focus",
+      pageEyebrow: "Accounts",
+      pageTitle: "All household accounts in one view.",
+      pageCopy: "Review balances, owners, institution contacts, and the purpose of each account.",
+      statsEyebrow: "Summary",
+      statsTitle: "Account posture",
+      recordsEyebrow: "Account directory",
+      recordsTitle: "Institutions and balances"
+    },
     aside: {
       title: "$2.48M tracked",
       text: "Cash flow, reserve, brokerage, and retirement balances are visible across six accounts."
@@ -162,6 +203,20 @@ window.familyControlData = {
     ]
   },
   insurance: {
+    pageMeta: {
+      title: "Insurance | Family Control Center",
+      description: "Household insurance dashboard for policy coverage, renewal timing, and carrier contacts."
+    },
+    chrome: {
+      sidebarEyebrow: "Coverage focus",
+      pageEyebrow: "Insurance",
+      pageTitle: "Policy visibility without chasing paperwork.",
+      pageCopy: "Track carriers, premiums, renewals, and household protection gaps with a clean static dashboard.",
+      statsEyebrow: "Summary",
+      statsTitle: "Coverage profile",
+      recordsEyebrow: "Policies",
+      recordsTitle: "Carrier and renewal detail"
+    },
     aside: {
       title: "5 active policies",
       text: "Coverage details, premiums, and renewals are organized by carrier and policy purpose."
@@ -231,6 +286,20 @@ window.familyControlData = {
     ]
   },
   contacts: {
+    pageMeta: {
+      title: "Contacts | Family Control Center",
+      description: "Trusted household contacts for legal, medical, financial, and emergency support."
+    },
+    chrome: {
+      sidebarEyebrow: "Contacts focus",
+      pageEyebrow: "Contacts",
+      pageTitle: "Every critical contact, organized by role.",
+      pageCopy: "Keep legal, medical, financial, and household support contacts available from any device.",
+      statsEyebrow: "Summary",
+      statsTitle: "Support network",
+      recordsEyebrow: "Directory",
+      recordsTitle: "People and institutions"
+    },
     aside: {
       title: "12 verified contacts",
       text: "Primary family, legal, financial, and medical contacts are grouped by role and urgency."
@@ -311,6 +380,20 @@ window.familyControlData = {
     ]
   },
   documents: {
+    pageMeta: {
+      title: "Documents | Family Control Center",
+      description: "Household document tracker for legal, financial, insurance, and identity records."
+    },
+    chrome: {
+      sidebarEyebrow: "Records focus",
+      pageEyebrow: "Documents",
+      pageTitle: "Critical records mapped to where they live.",
+      pageCopy: "Track originals, digital backups, and access status for the household documents that matter most.",
+      statsEyebrow: "Summary",
+      statsTitle: "Document posture",
+      recordsEyebrow: "Inventory",
+      recordsTitle: "Storage and access details"
+    },
     aside: {
       title: "87% documented",
       text: "Most critical records have mapped storage, owners, and digital backup status."
@@ -328,6 +411,7 @@ window.familyControlData = {
         description: "Will, trust, powers of attorney, and healthcare directives with current originals and backup copies.",
         tags: ["Legal", "Original + digital", "High priority"],
         drive_link: "",
+        last_reviewed: "2026-01-18",
         fields: {
           Location: "Home safe",
           Backup: "Encrypted drive + secure cloud",
@@ -341,6 +425,7 @@ window.familyControlData = {
         description: "Passports, birth certificates, and identity copies grouped for household travel and verification needs.",
         tags: ["Identity", "Original + digital", "Family"],
         drive_link: "",
+        last_reviewed: "2026-02-04",
         fields: {
           Location: "Safe deposit box",
           Backup: "Encrypted drive",
@@ -354,6 +439,7 @@ window.familyControlData = {
         description: "Deed, mortgage note, titles, and registrations with one remaining scan still needed.",
         tags: ["Property", "Mixed backup", "Needs action"],
         drive_link: "",
+        last_reviewed: "2026-02-11",
         fields: {
           Location: "Fire safe + filing cabinet",
           Backup: "Partial digital archive",
@@ -367,6 +453,7 @@ window.familyControlData = {
         description: "Declarations pages, policy schedules, and claims contact information for active coverage.",
         tags: ["Insurance", "Digital first", "Current"],
         drive_link: "",
+        last_reviewed: "2026-03-01",
         fields: {
           Location: "Secure cloud vault",
           Backup: "Printed summary in binder",
@@ -380,6 +467,7 @@ window.familyControlData = {
         description: "Returns, K-1s, and supporting PDFs retained with CPA-accessible storage.",
         tags: ["Tax", "7-year archive", "CPA shared"],
         drive_link: "",
+        last_reviewed: "2026-02-21",
         fields: {
           Location: "Encrypted cloud folder",
           Backup: "Offline archive disk",
@@ -393,6 +481,7 @@ window.familyControlData = {
         description: "Insurance cards, medication lists, and allergy information for travel and emergency use.",
         tags: ["Medical", "Travel copy", "Ready"],
         drive_link: "",
+        last_reviewed: "2026-03-07",
         fields: {
           Location: "Kitchen command drawer",
           Backup: "Phone PDFs + cloud vault",
@@ -403,6 +492,22 @@ window.familyControlData = {
     ]
   },
   emergency: {
+    pageMeta: {
+      title: "Emergency | Family Control Center",
+      description: "Emergency readiness dashboard for first actions, go-bag items, medical needs, and safe meeting details."
+    },
+    chrome: {
+      sidebarEyebrow: "Readiness focus",
+      pageEyebrow: "Emergency",
+      pageTitle: "Readiness details when speed matters most.",
+      pageCopy: "Keep emergency instructions, supplies, key contacts, and critical household actions structured and easy to scan.",
+      statsEyebrow: "Summary",
+      statsTitle: "Emergency posture",
+      actionsEyebrow: "First actions",
+      actionsTitle: "Immediate steps",
+      preparednessEyebrow: "Preparedness",
+      preparednessTitle: "Go-bag and medical essentials"
+    },
     aside: {
       title: "Readiness high",
       text: "Core emergency actions, meeting point, supplies, and medical information are clearly documented."

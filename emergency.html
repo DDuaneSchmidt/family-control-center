@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Emergency | Family Control Center</title>
-  <meta name="description" content="Emergency readiness dashboard for first actions, go-bag items, medical needs, and safe meeting details.">
+  <title>Family Control Center</title>
+  <meta name="description" content="Family Control Center">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,8 +18,8 @@
         <a class="brand" href="index.html">
           <span class="brand-mark">FC</span>
           <div>
-            <span class="brand-title">Family Control Center</span>
-            <span class="brand-subtitle">Household command dashboard</span>
+            <span class="brand-title" id="brandTitle">Loading</span>
+            <span class="brand-subtitle" id="brandSubtitle">Loading</span>
           </div>
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
@@ -27,16 +27,9 @@
           <span></span>
         </button>
       </div>
-      <nav class="sidebar-nav" id="primary-nav" aria-label="Primary navigation">
-        <a href="index.html" data-nav="dashboard">Dashboard</a>
-        <a href="accounts.html" data-nav="accounts">Accounts</a>
-        <a href="insurance.html" data-nav="insurance">Insurance</a>
-        <a href="contacts.html" data-nav="contacts">Contacts</a>
-        <a href="documents.html" data-nav="documents">Documents</a>
-        <a href="emergency.html" data-nav="emergency">Emergency</a>
-      </nav>
+      <nav class="sidebar-nav" id="primary-nav" aria-label="Primary navigation"></nav>
       <section class="sidebar-panel">
-        <p class="eyebrow">Readiness focus</p>
+        <p class="eyebrow" id="sidebarEyebrow">Loading</p>
         <strong id="pageAsideTitle">Loading</strong>
         <p id="pageAsideText">Preparing emergency overview</p>
       </section>
@@ -44,16 +37,16 @@
 
     <main class="main-content">
       <header class="page-header">
-        <p class="eyebrow">Emergency</p>
-        <h1>Readiness details when speed matters most.</h1>
-        <p class="hero-copy">Keep emergency instructions, supplies, key contacts, and critical household actions structured and easy to scan.</p>
+        <p class="eyebrow" id="pageEyebrow">Loading</p>
+        <h1 id="pageTitle">Loading</h1>
+        <p class="hero-copy" id="pageCopy">Loading</p>
       </header>
 
       <section class="panel">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Summary</p>
-            <h2>Emergency posture</h2>
+            <p class="eyebrow" id="statsEyebrow">Loading</p>
+            <h2 id="statsTitle">Loading</h2>
           </div>
         </div>
         <div class="stats-grid" id="emergencyStats"></div>
@@ -63,8 +56,8 @@
         <article class="panel">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">First actions</p>
-              <h2>Immediate steps</h2>
+              <p class="eyebrow" id="actionsEyebrow">Loading</p>
+              <h2 id="actionsTitle">Loading</h2>
             </div>
           </div>
           <div id="emergencyActions"></div>
@@ -73,8 +66,8 @@
         <article class="panel">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Preparedness</p>
-              <h2>Go-bag and medical essentials</h2>
+              <p class="eyebrow" id="preparednessEyebrow">Loading</p>
+              <h2 id="preparednessTitle">Loading</h2>
             </div>
           </div>
           <div id="emergencyPreparedness"></div>

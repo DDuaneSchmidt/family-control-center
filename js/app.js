@@ -6,6 +6,7 @@
   }
 
   const page = document.body.dataset.page;
+  renderSiteChrome(data.site, page);
   setActiveNav(page);
   initNavToggle();
 
@@ -22,6 +23,27 @@
         link.classList.add("is-active");
       }
     });
+  }
+
+  function renderSiteChrome(site, currentPage) {
+    if (!site) {
+      return;
+    }
+
+    setText("brandTitle", site.brandTitle);
+    setText("brandSubtitle", site.brandSubtitle);
+
+    const nav = document.getElementById("primary-nav");
+
+    if (!nav || !site.navigation) {
+      return;
+    }
+
+    nav.innerHTML = site.navigation.map(function (item) {
+      const active = item.id === currentPage ? " is-active" : "";
+
+      return '<a href="' + escapeAttribute(item.href) + '" data-nav="' + escapeAttribute(item.id) + '" class="' + active.trim() + '">' + escapeHtml(item.label) + "</a>";
+    }).join("");
   }
 
   function initNavToggle() {
@@ -53,6 +75,8 @@
   }
 
   function renderDashboard(dashboard) {
+    applyPageMeta(dashboard.pageMeta);
+    renderChrome(dashboard.chrome);
     setText("readinessScore", dashboard.readinessScore);
     setText("readinessText", dashboard.readinessText);
     renderButtons("heroActions", dashboard.heroActions);
@@ -66,6 +90,8 @@
       return;
     }
 
+    applyPageMeta(section.pageMeta);
+    renderChrome(section.chrome);
     setText("pageAsideTitle", section.aside.title);
     setText("pageAsideText", section.aside.text);
 
@@ -177,6 +203,7 @@
       const driveAction = item.drive_link ? renderButtonMarkup([
         { label: "Open Drive", href: item.drive_link, variant: "secondary", external: true }
       ]) : "";
+      const lastReviewed = item.last_reviewed ? '<span class="tag">Reviewed ' + escapeHtml(item.last_reviewed) + "</span>" : "";
 
       return [
         '<article class="record-card">',
@@ -186,7 +213,7 @@
         '<p class="muted">' + escapeHtml(descriptor) + "</p>",
         "</div>",
         "</div>",
-        '<div class="record-meta">' + categoryTag + tags + "</div>",
+        '<div class="record-meta">' + categoryTag + tags + lastReviewed + "</div>",
         '<div class="record-grid">' + fields + "</div>",
         driveAction ? '<div class="card-actions">' + driveAction + "</div>" : "",
         "</article>"
@@ -238,6 +265,34 @@
 
     if (element) {
       element.textContent = value;
+    }
+  }
+
+  function renderChrome(chrome) {
+    if (!chrome) {
+      return;
+    }
+
+    Object.keys(chrome).forEach(function (key) {
+      setText(key, chrome[key]);
+    });
+  }
+
+  function applyPageMeta(pageMeta) {
+    if (!pageMeta) {
+      return;
+    }
+
+    if (pageMeta.title) {
+      document.title = pageMeta.title;
+    }
+
+    if (pageMeta.description) {
+      const description = document.querySelector('meta[name="description"]');
+
+      if (description) {
+        description.setAttribute("content", pageMeta.description);
+      }
     }
   }
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Family Control Center</title>
-  <meta name="description" content="Premium household dashboard for accounts, insurance, contacts, documents, and emergency readiness.">
+  <meta name="description" content="Family Control Center">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,8 +18,8 @@
         <a class="brand" href="index.html">
           <span class="brand-mark">FC</span>
           <div>
-            <span class="brand-title">Family Control Center</span>
-            <span class="brand-subtitle">Household command dashboard</span>
+            <span class="brand-title" id="brandTitle">Loading</span>
+            <span class="brand-subtitle" id="brandSubtitle">Loading</span>
           </div>
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
@@ -27,16 +27,9 @@
           <span></span>
         </button>
       </div>
-      <nav class="sidebar-nav" id="primary-nav" aria-label="Primary navigation">
-        <a href="index.html" data-nav="dashboard">Dashboard</a>
-        <a href="accounts.html" data-nav="accounts">Accounts</a>
-        <a href="insurance.html" data-nav="insurance">Insurance</a>
-        <a href="contacts.html" data-nav="contacts">Contacts</a>
-        <a href="documents.html" data-nav="documents">Documents</a>
-        <a href="emergency.html" data-nav="emergency">Emergency</a>
-      </nav>
+      <nav class="sidebar-nav" id="primary-nav" aria-label="Primary navigation"></nav>
       <section class="sidebar-panel">
-        <p class="eyebrow">Readiness</p>
+        <p class="eyebrow" id="sidebarEyebrow">Loading</p>
         <strong id="readinessScore">Loading</strong>
         <p id="readinessText">Syncing household status</p>
       </section>
@@ -45,11 +38,9 @@
     <main class="main-content">
       <header class="hero">
         <div>
-          <p class="eyebrow">Household Status</p>
-          <h1>Premium oversight for the details that matter.</h1>
-          <p class="hero-copy">
-            Track financial readiness, protection gaps, essential contacts, documents, and emergency preparation in one static control center.
-          </p>
+          <p class="eyebrow" id="heroEyebrow">Loading</p>
+          <h1 id="heroTitle">Loading</h1>
+          <p class="hero-copy" id="heroCopy">Loading</p>
           <div class="hero-actions" id="heroActions"></div>
         </div>
         <div class="hero-metrics" id="heroMetrics"></div>
@@ -58,8 +49,8 @@
       <section class="panel panel-grid" aria-label="Household status snapshots">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Snapshot</p>
-            <h2>Household pulse</h2>
+            <p class="eyebrow" id="statusEyebrow">Loading</p>
+            <h2 id="statusTitle">Loading</h2>
           </div>
         </div>
         <div class="stats-grid" id="householdStatus"></div>
@@ -68,10 +59,10 @@
       <section class="dashboard-grid" aria-label="Dashboard sections">
         <div class="section-heading dashboard-heading">
           <div>
-            <p class="eyebrow">Control dashboard</p>
-            <h2>Priority sections</h2>
+            <p class="eyebrow" id="dashboardEyebrow">Loading</p>
+            <h2 id="dashboardTitle">Loading</h2>
           </div>
-          <p class="section-copy">Each card summarizes the current state, highlights key facts, and provides direct next actions.</p>
+          <p class="section-copy" id="dashboardCopy">Loading</p>
         </div>
         <div class="summary-grid" id="dashboardCards"></div>
       </section>
